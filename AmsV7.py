@@ -20,7 +20,7 @@ def sheet(profile,mode,state='n/a'):
             register_.close()
     except: return 100
     percentage_attendence = ( ( float(register[1]) / float(register[0]) ) * 100.0 ) #Calc % attendence!
-    if mode.lower() == 'r': #For only reding data
+    if mode.lower() == 'r': #Only for reading data!
         return [percentage_attendence]+register #Note that register still has values in strings inside!
     elif mode.lower() == 'w':
         register_obj = open('%s_stats.dat'%(profile,),'w')
@@ -56,11 +56,11 @@ def mycolor(x,return_gradient_color=False):
 
 def update_percentage(percentage):
     def update():
-        data = sheet('samad','r')
+        data = sheet('user_name','r')
         perc = data[0]
         percentage.config(text=(format(perc,'.2f')+'%'),
                           fg=mycolor(int(perc),True))
-        percentage.after(2000,update)
+        percentage.after(2000,update) #Time intervel is flexible but must be greater than 10ms otherwise cpu usage will skyrocket
     update()
 def sequence(*functions):
     def func(*args, **kwargs):
@@ -71,7 +71,7 @@ def sequence(*functions):
     return func
 
 def regist_needed():
-    last_daycode,last_monthcode=map(int,sheet('samad','r'))[3:]
+    last_daycode,last_monthcode=map(int,sheet('user_name','r'))[3:]
     if (current_daycode > last_daycode) or current_monthcode > last_monthcode:
         return True
     return False
@@ -88,10 +88,10 @@ def check_loop(root):
         hard_register.pack()
 def buttons(root):
     absent = Button(root,text='Absent',font="NanumGothicCoding 12 bold",bg='red',
-                    command=lambda:sequence(sheet('samad','w','a'),unpack(absent,present),check_loop(root)))
+                    command=lambda:sequence(sheet('user_name','w','a'),unpack(absent,present),check_loop(root)))
     absent.pack(side=RIGHT,padx=20)
     present = Button(root,text='Present',font="NanumGothicCoding 12 bold",bg='green',
-                     command=lambda: sequence(sheet('samad','w','p'),unpack(absent,present),check_loop(root)))
+                     command=lambda: sequence(sheet('user_name','w','p'),unpack(absent,present),check_loop(root)))
     present.pack(side=LEFT,padx=20)
     
 
