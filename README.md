@@ -1,4 +1,5 @@
 # Attendance-Monitoring-System
+<div style="font-family:NanumGothicCoding;">
 Monitors daily attendance of a subject through a simple UI
 This piece of software is only intended for use in various Linux distributions and needs Python 2.7 to be the default environment.
 Tough this code can be very easily modified to work in other operating systems as well who can use Python2.7 .
@@ -20,4 +21,4 @@ To use it:
 <li> Open the main python file and replace the keyword user_name by mike though Find and replace feature of your text editor.</li>
 <li>Add it to your start-up programs list.</li>
 <li>And you're ready to go! </li>
-</ul>
+</ul> </div>
