@@ -13,9 +13,9 @@ It always overlaps all windows until you close it through the Exit button or kil
 The color of your percentage attendance label's font will change with respect to you attendance percentage. (It's not a Bug!)
 
 To use it:
-<b>Just download the source code or clone it to a folder.
-Keep all files in the same folder.
-Rename the file user_name_stats.dat according to your name , </b> eg. mike_stats.dat
-<b> Open the main python file and replace the keyword user_name by mike though Find and replace feature of your text editor. 
-Add it to your start-up programs list.
-And you're ready to go! </b>
+<b>Just download the source code or clone it to a folder.</b>
+<b>Keep all files in the same folder.</b>
+<b>Rename the file user_name_stats.dat according to your name , </b> eg. mike_stats.dat
+<b> Open the main python file and replace the keyword user_name by mike though Find and replace feature of your text editor.</b>
+<b>Add it to your start-up programs list.</b>
+<b>And you're ready to go! </b>
