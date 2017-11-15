@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 #Python 2v7
-#AMS V7 Release
+#AMS V7
 #Under CC-SA
 #Ref:26Aug17
-#Author: Samad Haque <mailto:ubdussamad@gmail.com>
-from Tkinter import *
+#Author: Samad Haque <mailto:ubdus[user_name]@gmail.com>
+try:
+    from tkinter import *
+except:
+    from Tkinter import *
 import re,time
 #--------Declaring Variables!
 month_map = {'Mar':3,'Feb':2,'Aug':8,'Sep':9,'Apr':4,'Jun':6,
              'Jul':7,'Jan':1,'May':5,'Nov':11,'Dec':12,'Oct':10}
 current_daycode = int(re.findall(r'\d{1,3}',str(time.ctime()))[0])
-current_monthcode = month_map[ (re.findall(r'[A-B][a-z]*',str(time.ctime())))[0]]
-
+current_monthcode = month_map[ re.findall(r"[A-Z][a-z]*",str(time.ctime()))[1] ]
+profile = "[user_name]"
 
 def sheet(profile,mode,state='n/a'):
     try:
@@ -38,8 +41,8 @@ def sheet(profile,mode,state='n/a'):
             register_obj.close()
         else:
             return 102
-def dummy():
-    print 'This is a Dummy Function for test!'
+def dummy(*args):
+    print('This is a Dummy Function for test!')
 
 def time_updater(label):
     def update():
@@ -56,11 +59,11 @@ def mycolor(x,return_gradient_color=False):
 
 def update_percentage(percentage):
     def update():
-        data = sheet('user_name','r')
+        data = sheet(profile,'r')
         perc = data[0]
         percentage.config(text=(format(perc,'.2f')+'%'),
                           fg=mycolor(int(perc),True))
-        percentage.after(2000,update) #Time intervel is flexible but must be greater than 10ms otherwise cpu usage will skyrocket
+        percentage.after(200,update) #Time intervel is flexible but must be greater than 10ms otherwise cpu usage will skyrocket
     update()
 def sequence(*functions):
     def func(*args, **kwargs):
@@ -71,7 +74,7 @@ def sequence(*functions):
     return func
 
 def regist_needed():
-    last_daycode,last_monthcode=map(int,sheet('user_name','r'))[3:]
+    last_daycode,last_monthcode=map(int,sheet(profile,'r'))[3:]
     if (current_daycode > last_daycode) or current_monthcode > last_monthcode:
         return True
     return False
@@ -88,10 +91,10 @@ def check_loop(root):
         hard_register.pack()
 def buttons(root):
     absent = Button(root,text='Absent',font="NanumGothicCoding 12 bold",bg='red',
-                    command=lambda:sequence(sheet('user_name','w','a'),unpack(absent,present),check_loop(root)))
+                    command=lambda:sequence(dummy() ,sheet(profile,'w','a'),unpack(absent,present),check_loop(root)))
     absent.pack(side=RIGHT,padx=20)
     present = Button(root,text='Present',font="NanumGothicCoding 12 bold",bg='green',
-                     command=lambda: sequence(sheet('user_name','w','p'),unpack(absent,present),check_loop(root)))
+                     command=lambda: sequence(sheet(profile,'w','p'),unpack(absent,present),check_loop(root)))
     present.pack(side=LEFT,padx=20)
     
 
@@ -111,9 +114,9 @@ def main():
     head_timer = Label(root, fg="dark green",font = "NanumGothicCoding 12 bold")
     head_timer.pack(padx=20)
     time_updater(head_timer)
-    data = sheet('samad','r')
+    data = sheet(profile,'r')
     percentile_lb = Label(root,text='Your % Attendence is:',fg = "grey",font = "NanumGothicCoding 12 bold").pack(pady=10) #To be updated after an event only
-    percentage = Label(root,text=format(data[0],'.2f')+'%',fg = mycolor(int(data[0]),True),font = "NanumGothicCoding 25 bold")
+    percentage = Label(root,fg = mycolor(data[0],True),font = "NanumGothicCoding 25 bold")
     percentage.pack()
     update_percentage(percentage)
     l1=Label(root,text="Were you?",fg="black",font="NanumGothicCoding 10 bold").pack()
