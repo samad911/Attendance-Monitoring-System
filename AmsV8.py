@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#Python 2v7
+#Python 2v8
 #AMS V7 Release
 #Under CC-SA
 #Ref:26Aug17
