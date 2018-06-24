@@ -16,7 +16,7 @@ Even if you miss opening you computer for few days it has a hard register functi
 It always overlaps all windows and the only way to get rid of it is to close it through the Exit button or kill it through it's process id or something!
 The color of your percentage attendance label's font will change with respect to you attendance percentage.
 
-#To use it:
+# To use it:
 <ul>
 <li>Just download the source code or clone it to a folder.</li>
 <li>Navigate to the colned/extracted folder and run ams_v8.py by opening a terminal and typing `python ams_v8.py`</li>
