@@ -17,9 +17,7 @@ The color of your percentage attendance label's font will change with respect to
 To use it:
 <ul>
 <li>Just download the source code or clone it to a folder.</li>
-<li>Keep all files in the same folder.</li>
-<li>Rename the file user_name_stats.dat according to your name , </li> eg. mike_stats.dat
-<li> Open the main python file and replace the keyword user_name by mike though Find and replace feature of your text editor.</li>
-<li>Add it to your start-up programs list.</li>
+<li>Navigate to the colned/extracted folder and run ams_v8.py by opening a terminal and typing [code]python ams_v8.py[/code]</li>
+<li>Add it to your start-up programs list for easy continious use.</li>
 <li>And you're ready to go! </li>
 </ul> </div>
