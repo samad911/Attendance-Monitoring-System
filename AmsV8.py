@@ -20,7 +20,7 @@ from datetime import datetime
 
 
 #--------Declaring Variables!
-profile = "username"
+profile = "user"
 
 def sheet(profile,mode,state='n/a'):
     try:
@@ -113,15 +113,31 @@ def main():
     head_timer.pack(padx=20)
     time_updater(head_timer)
     data = sheet(profile,'r')
-    percentile_lb = Label(root,text='Your % Attendence is:',fg = "grey",
-    font = "NanumGothicCoding 12 bold").pack(pady=10)#Updated every 100ms
-    percentage = Label(root,fg = mycolor(data[0],True),font = "NanumGothicCoding 25 bold")
-    percentage.pack()
-    update_percentage(percentage)
+    percentile_lb = Label(root,text='Your % Attendence is:',fg = "grey",font = "NanumGothicCoding 12 bold").pack(pady=10)#Updated every 100ms
+
+    if type(data) == int:
+        if data == 100:
+            print("Log file not found.")
+            exit()
+        elif data == 102:
+            print("Bad mode query.")
+            print("If this problem, persits please contact ubdussamad@gmail.com for error reporting.")
+            exit()
+    clr = mycolor(data[0],True)
+    percentage_num = Label(root,fg = clr,font = "NanumGothicCoding 25 bold")
+    
+    percentage_num.pack()
+
+
+    update_percentage(percentage_num)
+    
     l1=Label(root,text="Were you?",fg="black",font="NanumGothicCoding 10 bold").pack()
+    
     exit_button = Button(root,text='Exit!',font="NanumGothicCoding 12 bold",fg='dark red',command=root.destroy).pack(fill=Y)
+
     check_loop(root)
     l1=Label(root,text="Ubdussamad | Bachmanity Inc.",fg="black",font="NanumGothicCoding 8 bold").pack(side=BOTTOM)
+
     root.mainloop()
 if __name__ == '__main__':
     main()

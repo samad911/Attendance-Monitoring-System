@@ -1,5 +1,6 @@
 # Attendance-Monitoring-System
-<div style="font-family:NanumGothicCoding;">
+
+
 Monitors daily attendance of a subject through a simple UI
 This piece of software is only intended for use in various Linux distributions and needs Python 2.7 to be the default environment.
 Tough this code can be very easily modified to work in other operating systems as well who can use Python2.7 .
